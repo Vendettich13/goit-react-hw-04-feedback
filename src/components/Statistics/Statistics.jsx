@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types"
 import css from "../Statistics/Statistics.module.css"
 
-export const Statistics = ({good, bad, neutral, total, positive }) => {
+export function Statistics({good, bad, neutral, total, positive }) {
     return <div className={css.statWrapper}>
         <ul>
             <li className={css.statItem}>Good: {good}</li>

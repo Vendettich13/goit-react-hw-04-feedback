@@ -1,16 +1,16 @@
 import { PropTypes } from "prop-types"
 import css from "../Feedback/FeedbackOptions.module.css"
 
-export const FeedbackOptions = ({ incrementGood, incrementBad, incrementNeutral }) => {
+export function FeedbackOptions({ options, onLeaveFeedback }) {
     return <div className={css.buttonWrapper}>
-        <button type="button" onClick={incrementGood} className={css.optionBtn}>Good</button>
-        <button type="button" onClick={incrementNeutral} className={css.optionBtn}>Neutral</button>
-        <button type="button" onClick={incrementBad} className={css.optionBtn}>Bad</button>
+        {options.map(option => {
+            return <button key={option} type="button" onClick={() => onLeaveFeedback(option)} className={css.optionBtn}>{option}</button>
+        })}
+       
     </div>
 }
 
 FeedbackOptions.propTypes = {
-    incrementGood: PropTypes.func,
-    incrementBad: PropTypes.func,
-    incrementNeutral: PropTypes.func,
+    onLeaveFeedback: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired,
 }
